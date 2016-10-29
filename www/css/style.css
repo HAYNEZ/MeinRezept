@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+.home-container {
+display: -webkit-flex;
+-webkit-flex-direction: column;
+
+}

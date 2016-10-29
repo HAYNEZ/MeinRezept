@@ -22,3 +22,10 @@ angular.module('starter', ['ionic','ngCordova'])
     }
   });
 })
+.controller('ListController' , function($scope) {
+  $scope.recipes = [
+    {title: 'Pancakes', image:"img/Pancakes_Example.png"},
+    {title: 'Fried chicken with cheese'},
+    {title: 'Thaicurry'}
+  ];
+})

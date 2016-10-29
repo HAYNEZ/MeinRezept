@@ -32,13 +32,66 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="starter" ng-controller="ListController">
 
     <ion-pane>
+
+      <!-- <ion-side-menus>
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-dark">
+            <h1 class="title">Projects</h1>
+          </ion-header-bar>
+        </ion-side-menu>
+      </ion-side-menus> -->
+
+
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <div class="buttons">
+          <button class="button button-icon icon ion-navicon-round"></button>
+        </div>
+        <h1 class="title">Dashboard</h1>
+        <div class="buttons">
+          <button class="button button-icon icon ion-search"></button>
+        </div>
       </ion-header-bar>
+
       <ion-content>
+        <div class="list">
+        <div class="card" ng-repeat="recipe in recipes">
+          <!-- <a
+            href="#"
+          > -->
+          <!-- href="#/{{recipe.id}}"
+          class="recipe recipe-thumbnail" -->
+            <!-- <img ng-src="{{ recipe.image }}"> -->
+            <img ng-src="{{ recipe.image }}"/>
+            <h4>{{ recipe.title }}</h4>
+          <!-- </a> -->
+        </div>
+      </div>
+        <!-- <ion-list>
+          <ion-item ng-repeat="recipe in recipes">
+            {{recipe.title}}
+          </ion-title>
+        </ion-list> -->
+        <!-- <div class="row">
+          <div class="col">
+            <a ng-repeat="recipe in recipes"
+              href="#/{{recipe.id}}"
+              class="recipe recipe-thumbnail">
+              <img ng-src="{{ recipe.image }}">
+              <h2>{{ recipe.title }}</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a ng-repeat="recipe in recipes"
+              href="#/{{recipe.id}}"
+              class="recipe recipe-thumbnail">
+              <img ng-src="{{ recipe.image }}">
+              <h2>{{ recipe.title }}</h2>
+            </a>
+          </div>
+        </div> -->
       </ion-content>
     </ion-pane>
   </body>
