@@ -43,6 +43,24 @@ angular.module('starter', ['ionic','ngCordova'])
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
+<<<<<<< HEAD
+
+                    TesseractPlugin.loadLanguage('deu', function(response) {
+                    deferred.resolve(response);
+                    }, function(reason) {
+                    deferred.reject('Error on loading OCR file for your language. ' + reason);
+                    });
+                    
+                    TesseractPlugin.recognizeText(imageData, language, function(recognizedText) {
+                    $scope.text = recognizedText;
+                    console.log(recognizedText);
+                    }, 
+                    function(reason) {
+                    console.log('Error on recognizing text from image. ' + reason);
+                    });
+
+=======
+>>>>>>> f8a01d8... add cordova camera with simple take photo function
                 }
                 
                 $scope.choosePhoto = function () {
