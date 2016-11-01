@@ -47,7 +47,7 @@ angular.module('starter', ['ionic','ngCordova'])
 
 
                 $scope.useTess = function () {
-                  Tesseract.recognize(myImage)
+                  Tesseract.recognize($scope.imgURI)
                   .then(function(result){
                   console.log(result)
                       });
