@@ -44,7 +44,7 @@ angular.module('starter', ['ionic','ngCordova'])
                         // An error occured. Show a message to the user
                     });
 
-                     Tesseract.recognize(myimage)
+                     Tesseract.recognize($scope.imgURI)
                      .then(function(result){
                      console.log(result)};
 
