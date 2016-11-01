@@ -43,6 +43,11 @@ angular.module('starter', ['ionic','ngCordova'])
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
+
+                     Tesseract.recognize(myimage)
+                     .then(function(result){
+                     console.log(result)};
+
                 }
                 
                 $scope.choosePhoto = function () {
