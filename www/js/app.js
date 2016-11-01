@@ -18,7 +18,7 @@ angular.module('starter', ['ionic','ngCordova'])
       cordova.plugins.Keyboard.disableScroll(true);
     }
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.styleDefault(s);
     }
   });
 })
@@ -43,12 +43,16 @@ angular.module('starter', ['ionic','ngCordova'])
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
-
-                     Tesseract.recognize($scope.imgURI)
-                     .then(function(result){
-                     console.log(result)};
-
                 }
+
+
+                $scope.useTess = function () {
+                  Tesseract.recognize(myImage)
+                  .then(function(result){
+                  console.log(result)
+                      });
+
+                };
                 
                 $scope.choosePhoto = function () {
                   var options = {
