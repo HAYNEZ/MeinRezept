@@ -49,7 +49,8 @@ angular.module('starter', ['ionic','ngCordova'])
                 $scope.useTess = function () {
                   Tesseract.recognize($scope.imgURI)
                   .then(function(result){
-                  console.log(result)
+                  var p = document.createElement("p")
+                  p.appendChild(result);  
                       });
 
                 };
@@ -66,6 +67,7 @@ angular.module('starter', ['ionic','ngCordova'])
                     popoverOptions: CameraPopoverOptions,
                     saveToPhotoAlbum: false
                 };
+
    
                     $cordovaCamera.getPicture(options).then(function (imageData) {
                         $scope.imgURI = "data:image/jpeg;base64," + imageData;
