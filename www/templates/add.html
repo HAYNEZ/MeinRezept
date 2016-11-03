@@ -1,0 +1,45 @@
+<ion-view view-title="Add">
+  <ion-content class="padding">
+    <!-- <h3>Create hybrid mobile apps with the web technologies you love.</h3>
+    <p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building highly interactive apps.</p>
+    <p>Built with Sass and optimized for AngularJS.</p>
+    <p>
+      <a class="button icon icon-right ion-chevron-right" href="#/tab/navstack">Tabs Nav Stack</a>
+    </p> -->
+    <!--Titel-->
+    <label class="item item-input">
+      <span class="input-label">Title</span>
+      <input type="text">
+    </label>
+
+
+    <!-- Foto-Input: Foto machen oder Gallerie -->
+    <div class="picture">
+    </div>
+    <!--Zutaten - TODO:Anderes Format wählen-->
+    <div class="ingredients">
+      <p>Zutaten</p>
+      <div class="ingredient">
+        <input class="quantity" type="number" style="display:inline; border:solid;">
+        <input class="quantity_unit" type="text" style="display:inline; border:solid;"> <!-- ggf Auswahl aus gegebenen Mengeneinheiten-->
+        <input class="name" type="text" style="display:inline; border:solid;">
+      </div>
+      <button title="Add" class="button button-icon icon ion-plus-round"></button>
+    </div>
+
+    <div class="description">
+      <p>Beschreibung</p>
+      <textarea class="description" type="text" style="border:solid; width:100%; height:100px;"></textarea>
+    </div>
+
+    <div id="rating_container">
+      <p>Rating</p>
+      <input id="rating" type="number" style="border:solid;">
+    </div>
+
+    <!-- <rating ng-model="data.rating" max="data.max" ></rating> -->
+
+
+
+  </ion-content>
+</ion-view>

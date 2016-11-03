@@ -41,22 +41,23 @@ angular.module('starter', ['ionic','ngCordova'])
         }
       }
     })
-    .state('tabs.about', {
-      url: "/about",
+    .state('tabs.add', {
+      url: "/add",
       views: {
-        'about-tab': {
-          templateUrl: "templates/about.html"
+        'add-tab': {
+          templateUrl: "templates/add.html"
+          // controller: "AboutCtrl"
         }
       }
     })
-    .state('tabs.navstack', {
-      url: "/navstack",
-      views: {
-        'about-tab': {
-          templateUrl: "templates/nav-stack.html"
-        }
-      }
-    })
+    // .state('tabs.navstack', {
+    //   url: "/navstack",
+    //   views: {
+    //     'add-tab': {
+    //       templateUrl: "templates/nav-stack.html"
+    //     }
+    //   }
+    // })
     .state('tabs.contact', {
       url: "/contact",
       views: {
@@ -71,6 +72,14 @@ angular.module('starter', ['ionic','ngCordova'])
 .controller('HomeTabCtrl', function($scope) {
   console.log('HomeTabCtrl');
 });
+
+// .controller('AddCtrl', function($scope) {
+//   console.log('AddCtrl');
+//   $scope.rating = 4;
+//   $scope.data = {
+//     rating : 1,
+//     max: 5
+// });
 
 
 // .run(function($ionicPlatform) {
