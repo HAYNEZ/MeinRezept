@@ -33,4 +33,9 @@ angular.module('starter', ['ionic','ngCordova'])
     {title: 'Thaicurry4'}
 
   ];
+.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}]
 })
