@@ -1,50 +1,119 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
 
-    <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
 
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
+  <!-- un-comment this code to enable service worker
+  <script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+  .then(() => console.log('service worker installed'))
+  .catch(err => console.log('Error', err));
+  }
+  </script>-->
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="js/ng-cordova.min.js"></script>
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="js/ng-cordova.min.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter" ng-controller="ListController">
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+</head>
 
-    <ion-pane>
-
-      <!-- <ion-side-menus>
-        <ion-side-menu side="left">
-          <ion-header-bar class="bar-dark">
-            <h1 class="title">Projects</h1>
-          </ion-header-bar>
-        </ion-side-menu>
-      </ion-side-menus> -->
+<body ng-app="starter" ng-controller="ListController">
 
 
+  <!-- <ion-nav-bar>
+    <ion-nav-buttons side="left">
+     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-nav-view>
+    Some text
+  </ion-nav-view>
+<ion-side-menus>
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Pocket Kitchen</h1>
+    </ion-header-bar>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item menu-close ng-click="login()">
+          Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/app/search">
+          Einkaufsliste
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus> -->
+
+  <!-- <ion-side-menus>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Pocket Kitchen</h1>
+    </ion-header-bar>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item menu-close ng-click="login()">
+          Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/app/search">
+          Einkaufsliste
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+    <ion-nav-bar class="bar-light">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view>
+    </ion-nav-view>
+  </ion-side-menus> -->
+
+
+
+
+
+
+  <!-- linkes Menu-->
+  <ion-side-menus>
+
+    <ion-side-menu side="left">
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Pocket Kitchen</h1>
+      </ion-header-bar>
+      <ion-content class="has-header">
+        <ion-list>
+          <ion-item menu-close ng-click="login()">
+            Dashboard
+          </ion-item>
+          <ion-item menu-close href="#/app/search">
+            Einkaufsliste
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content>
       <ion-header-bar class="bar-stable">
         <div class="buttons">
           <button class="button button-icon icon ion-navicon-round"></button>
@@ -55,44 +124,42 @@
         </div>
       </ion-header-bar>
 
+
       <ion-content>
-        <div class="list">
-        <div class="card" ng-repeat="recipe in recipes">
-          <!-- <a
-            href="#"
-          > -->
-          <!-- href="#/{{recipe.id}}"
-          class="recipe recipe-thumbnail" -->
-            <!-- <img ng-src="{{ recipe.image }}"> -->
-            <img ng-src="{{ recipe.image }}"/>
-            <h4>{{ recipe.title }}</h4>
-          <!-- </a> -->
+
+        <div class="row" ng-repeat="recipe in recipes" ng-if="$index % 2 == 0" style="flex-wrap: wrap;">
+          <div class="col col-50 text-center" ng-if="recipes.length > $index" style="padding:2px; margin: 2px 0 2px 0; border: groove; border-radius:5px;">
+            <div style="background-image:url({{recipes[0].image}});
+            background-repeate:no-repeat;
+            background-size:contain;
+            width:100%;
+            height:0;
+            padding-top:100%"></div>
+            <h4>{{recipes[$index].title}}</h4>
+
+          </div>
+          <div class="col col-50 text-center" ng-if="recipes.length > ($index+1)" style="padding:2px; margin: 2px 0 2px 0; border: groove; border-radius:5px;">
+            <div style="background-image:url({{recipes[0].image}});
+            background-repeate:no-repeat;
+            background-size:contain;
+            width:100%;
+            height:0;
+            padding-top:100%"></div>
+            <h4>{{recipes[$index+1].title}}</h4>
+          </div>
         </div>
-      </div>
-        <!-- <ion-list>
-          <ion-item ng-repeat="recipe in recipes">
-            {{recipe.title}}
-          </ion-title>
-        </ion-list> -->
-        <!-- <div class="row">
-          <div class="col">
-            <a ng-repeat="recipe in recipes"
-              href="#/{{recipe.id}}"
-              class="recipe recipe-thumbnail">
-              <img ng-src="{{ recipe.image }}">
-              <h2>{{ recipe.title }}</h2>
-            </a>
-          </div>
-          <div class="col">
-            <a ng-repeat="recipe in recipes"
-              href="#/{{recipe.id}}"
-              class="recipe recipe-thumbnail">
-              <img ng-src="{{ recipe.image }}">
-              <h2>{{ recipe.title }}</h2>
-            </a>
-          </div>
-        </div> -->
       </ion-content>
-    </ion-pane>
-  </body>
+
+        <div class="float-button">
+        	<span class="height-fix">
+        	  	<a class="content">
+        	    	<i class="ion-plus-round"> </i>
+        	   	</a>
+        	  </span>
+        </div>
+
+    </ion-side-menu-content>
+  </ion-side-menus>
+
+</body>
 </html>

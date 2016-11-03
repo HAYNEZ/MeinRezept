@@ -26,6 +26,11 @@ angular.module('starter', ['ionic','ngCordova'])
   $scope.recipes = [
     {title: 'Pancakes', image:"img/Pancakes_Example.png"},
     {title: 'Fried chicken with cheese'},
-    {title: 'Thaicurry'}
+    {title: 'Thaicurry'},
+    {title: 'Thaicurry1'},
+    {title: 'Thaicurry2'},
+    {title: 'Thaicurry3'},
+    {title: 'Thaicurry4'}
+
   ];
 })
