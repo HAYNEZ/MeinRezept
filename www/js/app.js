@@ -5,6 +5,29 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','ngCordova'])
 
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('tabs', {
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html"
+    })
+    .state('tabs.home', {
+      url: "/home",
+      views: {
+        'home-tab': {
+          templateUrl: "templates/main.html",
+          controller: 'HomeTabCtrl'
+        }
+      }
+    })
+  });
+
+  .controller('HomeTabCtrl', function($scope) {
+  console.log('HomeTabCtrl');
+});
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
