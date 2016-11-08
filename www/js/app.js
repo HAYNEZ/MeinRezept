@@ -27,22 +27,22 @@ angular.module('starter', ['ionic','ngCordova','ngStorage'])
         }
       }
     })
-    .state('tabs.facts', {
-      url: "/facts",
-      views: {
-        'home-tab': {
-          templateUrl: "templates/facts.html"
-        }
-      }
-    })
-    .state('tabs.facts2', {
-      url: "/facts2",
-      views: {
-        'home-tab': {
-          templateUrl: "templates/facts2.html"
-        }
-      }
-    })
+    // .state('tabs.facts', {
+    //   url: "/facts",
+    //   views: {
+    //     'home-tab': {
+    //       templateUrl: "templates/facts.html"
+    //     }
+    //   }
+    // })
+    // .state('tabs.facts2', {
+    //   url: "/facts2",
+    //   views: {
+    //     'home-tab': {
+    //       templateUrl: "templates/facts2.html"
+    //     }
+    //   }
+    // })
     .state('tabs.add', {
       url: "/add",
       views: {
@@ -71,22 +71,20 @@ angular.module('starter', ['ionic','ngCordova','ngStorage'])
    $urlRouterProvider.otherwise("/tab/home");
 })
 
-.controller('HomeTabCtrl', function($scope) {
-  console.log('HomeTabCtrl');
-})
-
-.controller('AddCtrl', function($scope, StorageService){
+.controller('HomeTabCtrl', function($scope, StorageService) {
+  // console.log('HomeTabCtrl');
   $scope.recipes = StorageService.getAll();
-
-  $scope.add = function (recipe) {
-    StorageService.add(recipe);
-  };
-
   $scope.remove = function (recipe) {
     StorageService.remove(recipe);
   };
-
 })
+
+.controller('AddCtrl', function($scope, StorageService){
+  $scope.add = function (recipe) {
+    StorageService.add(recipe);
+  };
+})
+
 .factory ('StorageService', function ($localStorage) {
 
   $localStorage = $localStorage.$default({
