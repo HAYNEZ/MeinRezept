@@ -3,11 +3,13 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','ngCordova'])
+angular.module('starter', ['ionic','ngCordova','ngStorage'])
+
 
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -45,8 +47,8 @@ angular.module('starter', ['ionic','ngCordova'])
       url: "/add",
       views: {
         'add-tab': {
-          templateUrl: "templates/add.html"
-          // controller: "AboutCtrl"
+          templateUrl: "templates/add.html",
+          controller: "AddCtrl"
         }
       }
     })
@@ -71,50 +73,41 @@ angular.module('starter', ['ionic','ngCordova'])
 
 .controller('HomeTabCtrl', function($scope) {
   console.log('HomeTabCtrl');
-});
+})
 
-// .controller('AddCtrl', function($scope) {
-//   console.log('AddCtrl');
-//   $scope.rating = 4;
-//   $scope.data = {
-//     rating : 1,
-//     max: 5
-// });
+.controller('AddCtrl', function($scope, StorageService){
+  $scope.recipes = StorageService.getAll();
 
+  $scope.add = function (recipe) {
+    StorageService.add(recipe);
+  };
 
-// .run(function($ionicPlatform) {
-//   $ionicPlatform.ready(function() {
-//     if(window.cordova && window.cordova.plugins.Keyboard) {
-//       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-//       // for form inputs)
-//       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-//
-//       // Don't remove this line unless you know what you are doing. It stops the viewport
-//       // from snapping when text inputs are focused. Ionic handles this internally for
-//       // a much nicer keyboard experience.
-//       cordova.plugins.Keyboard.disableScroll(true);
-//     }
-//     if(window.StatusBar) {
-//       StatusBar.styleDefault();
-//     }
-//   });
-// })
+  $scope.remove = function (recipe) {
+    StorageService.remove(recipe);
+  };
 
-// .controller('MainControlelr', function($scope) {
-//
-// })
-// .controller('ListController' , function($scope) {
-//   $scope.recipes = [
-//     {title: 'Pancakes', image:"img/Pancakes_Example.png"},
-//     {title: 'Fried chicken with cheese'},
-//     {title: 'Thaicurry'},
-//     {title: 'Thaicurry1'},
-//     {title: 'Thaicurry2'},
-//     {title: 'Thaicurry3'},
-//     {title: 'Thaicurry4'}
-//
-//   ];
-// .config(['$ionicConfigProvider', function($ionicConfigProvider) {
-//     $ionicConfigProvider.tabs.position('bottom'); // other values: top
-// }]
-// })
+})
+.factory ('StorageService', function ($localStorage) {
+
+  $localStorage = $localStorage.$default({
+    recipes: []
+  });
+
+  var _getAll = function () {
+    return $localStorage.recipes;
+  };
+
+  var _add = function (recipe) {
+    $localStorage.recipes.push(recipe);
+  };
+
+  var _remove = function (recipe) {
+    $localStorage.recipes.splice($localStorage.recipes.indexOf(recipe), 1);
+  };
+
+  return {
+    getAll: _getAll,
+    add: _add,
+    remove: _remove
+  };
+})

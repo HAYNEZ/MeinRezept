@@ -1,15 +1,11 @@
 <ion-view view-title="Add">
-  <ion-content class="padding">
-    <!-- <h3>Create hybrid mobile apps with the web technologies you love.</h3>
-    <p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building highly interactive apps.</p>
-    <p>Built with Sass and optimized for AngularJS.</p>
-    <p>
-      <a class="button icon icon-right ion-chevron-right" href="#/tab/navstack">Tabs Nav Stack</a>
-    </p> -->
+  <ion-content class="padding" ng-controller="AddCtrl">
+
     <!--Titel-->
     <label class="item item-input">
       <span class="input-label">Title</span>
-      <input type="text">
+      <input type="text" ng-model="recipe.title">
+      <!--  -->
     </label>
 
 
@@ -29,16 +25,25 @@
 
     <div class="description">
       <p>Beschreibung</p>
-      <textarea class="description" type="text" style="border:solid; width:100%; height:100px;"></textarea>
+      <textarea class="description" type="text" style="border:solid; width:100%; height:100px;" ng-model="recipe.description"></textarea>
     </div>
 
     <div id="rating_container">
       <p>Rating</p>
-      <input id="rating" type="number" style="border:solid;">
+      <input id="rating" type="number" style="border:solid;" ng-model="recipe.rating">
     </div>
 
     <!-- <rating ng-model="data.rating" max="data.max" ></rating> -->
+    <button title="Save" class="button " ng-click="add(recipe)">Save</button>
 
+
+    <!-- Just for testing -->
+    <ion-list show-delete="false" can-swipe="true">
+                <ion-item ng-repeat="recipe in recipes">
+                    {{recipe}}
+                    <i class="button ion-ios-minus-outline icon" ng-click="remove(recipe)"></i>
+                </ion-item>
+    </ion-list>
 
 
   </ion-content>
